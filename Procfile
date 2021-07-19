@@ -1,1 +1,1 @@
-web: gunicorn lahenkenius2p1.wsgi --log-file -
+web: gunicorn efs.wsgi --log-file -

@@ -3,3 +3,5 @@ psycopg2==2.9.1
 gunicorn
 django-heroku
 django-crispy-forms
+requests==2.21.0
+requests-oauthlib==1.0.0

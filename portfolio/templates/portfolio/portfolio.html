@@ -43,13 +43,11 @@
         </tr>
         </thead>
         <tbody>
-        {% for stock in stocks %}
             <tr>
-                <td>{{ stock.customer }}</td>
-                <td>{{ stock.symbol }}</td>
-                <td>{{ stock.name }}</td>
+                <td>{{ sum_acquired_value|addition:sum_of_initial_stock_value|intcomma }}</td>
+                <td>{{ sum_recent_value|addition:sum_of_current_stock_value|intcomma.symbol }}</td>
+                <td>{{ sum_recent_value|addition:sum_of_initial_stock_value|intcomma.name }}</td>
             </tr>
-        {% endfor %}
         </tbody>
     </table>
 </div>
@@ -160,13 +158,11 @@
         </tr>
         </thead>
         <tbody>
-        {% for stock in stocks %}
             <tr>
-                <td>{{ stock.customer }}</td>
-                <td>{{ stock.symbol }}</td>
-                <td>{{ stock.name }}</td>
+                <td>{{ sum_acquired_value }}</td>
+                <td>{{ sum_recent_value }}</td>
+                <td>{{ sum_recent_value|sub:sum_acquired_value|intcomma }}</td>
             </tr>
-        {% endfor %}
         </tbody>
     </table>
 </div>

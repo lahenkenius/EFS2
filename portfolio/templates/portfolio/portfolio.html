@@ -136,9 +136,9 @@
                 <td>{{ investment.category }}</td>
                 <td>{{ investment.description }}</td>
                 <td>{{ investment.acquired_value|intcomma }}</td>
-                <td>{{ investment.acquired_date|intcomma }}</td>
+                <td>{{ investment.acquired_date }}</td>
                 <td>{{ investment.recent_value|intcomma}}</td>
-                <td>{{ investment.recent_date|intcomma}}</td>
+                <td>{{ investment.recent_date}}</td>
                 <td>{{ investment.recent_value|sub:investment.acquired_value|intcomma}}</td>
 
             </tr>
@@ -159,9 +159,9 @@
         </thead>
         <tbody>
             <tr>
-                <td>{{ sum_acquired_value }}</td>
-                <td>{{ sum_recent_value }}</td>
-                <td>{{ sum_recent_value|sub:sum_acquired_value|intcomma }}</td>
+                <td>{{ portfolio.sum_acquired_value }}</td>
+                <td>{{ portfolio.sum_recent_value }}</td>
+                <td>{{ portfolio.sum_recent_value|sub:portfolio.sum_acquired_value|intcomma }}</td>
             </tr>
         </tbody>
     </table>

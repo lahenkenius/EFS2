@@ -159,9 +159,9 @@
         </thead>
         <tbody>
             <tr>
-                <td>{{ sum_acquired_value.Sum }}</td>
-                <td>{{ sum_recent_value.Sum }}</td>
-                <td>{{ sum_recent_value|sub:sum_acquired_value|intcomma }}</td>
+                <td>{{ sum_acquired_value.total_amount|intcomma }}</td>
+                <td>{{ sum_recent_value.total_amount|intcomma }}</td>
+                <td>{{ sum_recent_value.total_amount|sub:sum_acquired_value.total_amount|intcomma }}</td>
             </tr>
         </tbody>
     </table>

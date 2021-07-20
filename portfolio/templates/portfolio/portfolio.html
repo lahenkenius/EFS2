@@ -46,7 +46,7 @@
             <tr>
                 <td>{{ sum_acquired_value.total_amount|addition:sum_of_initial_stock_value|intcomma }}</td>
                 <td>{{ sum_recent_value.total_amount|addition:sum_current_stocks_value|intcomma }}</td>
-                <td>{{ sum_recent_value|addition:sum_of_initial_stock_value|intcomma }}</td>
+                <td>{{ sum_recent_value.total_amount|addition:sum_current_stocks_value|sub:sum_acquired_value.total_amount|sub:sum_of_initial_stock_value|intcomma }}</td>
             </tr>
         </tbody>
     </table>
@@ -102,8 +102,8 @@
         </thead>
         <tbody>
             <tr>
-                <td>{{ sum_of_initial_stock_value }}</td>
-                <td>{{ sum_current_stocks_value }}</td>
+                <td>{{ sum_of_initial_stock_value|intcomma }}</td>
+                <td>{{ sum_current_stocks_value|intcomma }}</td>
                 <td>{{ sum_current_stocks_value|sub:sum_of_initial_stock_value|intcomma }}</td>
             </tr>
         </tbody>

@@ -61,7 +61,7 @@
                 <td>{{ stock.initial_stock_value|intcomma}}</td>
                 <td>{{ stock.current_stock_price|intcomma}}</td>
                 <td>{{ stock.current_stock_value|intcomma}}</td>
-                <td>{{ stock.initial_stock_value|intcomma}}</td>
+                <td>{{ stock.current_stock_value|sub:stock.initial_stock_value}}</td>
 
             </tr>
         {% endfor %}

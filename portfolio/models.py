@@ -70,3 +70,17 @@ class Stock(models.Model):
 
     def initial_stock_value(self):
         return self.shares * self.purchase_price
+
+    def current_stock_price(self):
+        symbol_f = str(self.symbol)
+        main_api = 'http://api.marketstack.com/v1/eod?'
+        api_key = 'access_key=d2ed4c40112db41238a3fb4d806ed5ce&limit=1&symbols='
+        url = main_api + api_key + symbol_f
+        json_data = requests.get(url).json()
+        open_price = float(json_data["data"][0]["open"])
+        share_value = open_price
+        return share_value
+
+    def current_stock_value(self):
+        return float(self.current_stock_price()) * float(self.shares)
+

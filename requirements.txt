@@ -5,3 +5,5 @@ django-heroku
 django-crispy-forms
 requests==2.21.0
 requests-oauthlib==1.0.0
+djangorestframework==3.8.2
+django-mathfilters==0.4.0

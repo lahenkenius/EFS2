@@ -103,11 +103,10 @@
         </tr>
         </thead>
         <tbody>
-        {% for stock in stocks %}
             <tr>
-                <td>{{ stock.sum_acquired_value }}</td>
-                <td>{{ stock.sum_recent_value }}</td>
-                <td>{{ stock.sum_recent_value|sub:stock.sum_acquired_value|intcomma }}</td>
+                <td>{{ sum_of_initial_stock_value }}</td>
+                <td>{{ sum_current_stocks_value }}</td>
+                <td>{{ sum_current_stocks_value|sub:sum_of_initial_stock_value|intcomma }}</td>
             </tr>
         {% endfor %}
         </tbody>

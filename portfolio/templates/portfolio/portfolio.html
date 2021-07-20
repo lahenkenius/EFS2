@@ -44,8 +44,8 @@
         </thead>
         <tbody>
             <tr>
-                <td>{{ sum_acquired_value|addition:sum_of_initial_stock_value|intcomma }}</td>
-                <td>{{ sum_recent_value|addition:sum_current_stocks_value|intcomma }}</td>
+                <td>{{ sum_acquired_value.total_amount|addition:sum_of_initial_stock_value|intcomma }}</td>
+                <td>{{ sum_recent_value.total_amount|addition:sum_current_stocks_value|intcomma }}</td>
                 <td>{{ sum_recent_value|addition:sum_of_initial_stock_value|intcomma }}</td>
             </tr>
         </tbody>

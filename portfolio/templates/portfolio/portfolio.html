@@ -159,9 +159,9 @@
         </thead>
         <tbody>
             <tr>
-                <td>{{ portfolio.sum_acquired_value }}</td>
-                <td>{{ portfolio.sum_recent_value }}</td>
-                <td>{{ portfolio.sum_recent_value|sub:portfolio.sum_acquired_value|intcomma }}</td>
+                <td>{{ sum_acquired_value.Sum }}</td>
+                <td>{{ sum_recent_value.Sum }}</td>
+                <td>{{ sum_recent_value|sub:sum_acquired_value|intcomma }}</td>
             </tr>
         </tbody>
     </table>

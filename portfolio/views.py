@@ -9,11 +9,15 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import CustomerSerializer
+import requests
+import json
 
 now = timezone.now()
 def home(request):
-   return render(request, 'portfolio/home.html',
-                 {'portfolio': home})
+    response = requests.get('https://api.getgeoapi.com/v2/ip/check?api_key=6e1e62d64cbc5f6cec2a8cae8dbd34cd38953e6a&format=json')
+    geodata = response.json()
+    return render(request, 'portfolio/home.html',
+                 {'portfolio': home, 'ip': geodata['ip']})
 
 @login_required
 def customer_list(request):
@@ -134,6 +138,7 @@ def investment_delete(request, pk):
 
 @login_required
 def portfolio(request,pk):
+
    customer = get_object_or_404(Customer, pk=pk)
    customers = Customer.objects.filter(created_date__lte=timezone.now())
    investments =Investment.objects.filter(customer=pk)
@@ -144,15 +149,22 @@ def portfolio(request,pk):
    # Initialize the value of the stocks
    sum_current_stocks_value = 0
    sum_of_initial_stock_value = 0
+   response = requests.get('https://api.getgeoapi.com/v2/currency/convert?api_key=6e1e62d64cbc5f6cec2a8cae8dbd34cd38953e6a&from=USD&to=EUR&format=json')
+   exchangerate = response.json()
+   extrate = exchangerate['rates']
+   exttrate = extrate['EUR']
+   exrate = exttrate['rate']
 
    # Loop through each stock and add the value to the total
    for stock in stocks:
         sum_current_stocks_value += stock.current_stock_value()
         sum_of_initial_stock_value += stock.initial_stock_value()
 
+
    return render(request, 'portfolio/portfolio.html', {'customers': customers,
                                                        'investments': investments,
                                                        'stocks': stocks,
+                                                       'exrate': exrate,
                                                        'sum_acquired_value': sum_acquired_value,
                                                        'sum_recent_value': sum_recent_value,
                                                         'sum_current_stocks_value': sum_current_stocks_value,

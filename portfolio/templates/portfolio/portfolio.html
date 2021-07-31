@@ -39,6 +39,7 @@
             <th>Portfolio Initial Investments</th>
             <th>Portfolio Current Investments</th>
             <th>Grand Total Results</th>
+            <th>Grand Total but in Euro</th>
 
         </tr>
         </thead>
@@ -47,6 +48,8 @@
                 <td>{{ sum_acquired_value.total_amount|addition:sum_of_initial_stock_value|intcomma }}</td>
                 <td>{{ sum_recent_value.total_amount|addition:sum_current_stocks_value|intcomma }}</td>
                 <td>{{ sum_recent_value.total_amount|addition:sum_current_stocks_value|sub:sum_acquired_value.total_amount|sub:sum_of_initial_stock_value|intcomma }}</td>
+                <td>{{ sum_recent_value.total_amount|addition:sum_current_stocks_value|sub:sum_acquired_value.total_amount|mul:exrate|intcomma }}</td>
+
             </tr>
         </tbody>
     </table>
